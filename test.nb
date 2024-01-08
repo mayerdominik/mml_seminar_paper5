@@ -1,0 +1,14 @@
+(*Step 1:Define the function*)
+A = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}; (* Define A as a matrix *)
+b = {4, 5, 6}; (* Define b *)
+f[x_] := Norm[A*x - b, 2]
+
+(*Step 2:Find the derivative*)
+df[x_] = D[f[x], x]
+
+(*Step 3:Compute the Lipschitz constant*)
+lipschitzConstant = 
+ Maximize[{Abs[df[x]], -\[Infinity] < x < \[Infinity]}, x][[1]]
+
+(*Display the result*)
+Print["Lipschitz Constant: ", lipschitzConstant]
